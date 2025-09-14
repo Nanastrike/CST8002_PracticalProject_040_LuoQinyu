@@ -1,12 +1,14 @@
-const { readFile,writeFile } = require('fs').promises;
-const fs = require('fs').promises;
-const { resolve } = require('path');
 /*
  * Reference:
  * Source: https://www.w3schools.com/nodejs/nodejs_filesystem.asp
  * Description: Adapted from w3schools solution to work with my files
  * Date: 2025-09-13
  */
+
+const { readFile,writeFile } = require('fs').promises;
+const fs = require('fs').promises;
+const { resolve } = require('path');
+
 //read file modules
 async function readContent(fileName){
     try{
@@ -19,12 +21,6 @@ async function readContent(fileName){
 
 // readContent('myfile.txt');
 
-/*
- * Reference:
- * Source: https://www.w3schools.com/nodejs/nodejs_filesystem.asp
- * Description: Adapted from w3schools solution to work with my files
- * Date: 2025-09-13
- */
 //write or overwrite a file
 async function writeContent(newFileName, newContent){
     try{
@@ -36,3 +32,5 @@ async function writeContent(newFileName, newContent){
 
 // writeContent('myfile.txt','sunny day');
 // readContent('myfile.txt');
+
+module.exports = { readContent, writeContent };
