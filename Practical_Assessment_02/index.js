@@ -4,7 +4,7 @@
  * Description: Adapted from w3schools solution to work with my files
  * Date: 2025-09-13
  */
-const FileOperation = require('./fileOperation');
+const FileOperation = require('./fileOperation')
 const Ask = require('./ask')
 
 
