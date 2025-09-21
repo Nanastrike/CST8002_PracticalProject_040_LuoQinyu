@@ -1,3 +1,11 @@
+/*
+  @author :Qinyu Luo
+  @course: CST8002
+  @assignment: practical projects 1
+  @time: 2025/9/21
+  @description:  an object containing all the variables and a constructor
+*/
+
 class RecordObjects{
     constructor(siteIdentification, year, transect, quadrat, speciesCommonName, count){
         this.siteIdentification = siteIdentification;
