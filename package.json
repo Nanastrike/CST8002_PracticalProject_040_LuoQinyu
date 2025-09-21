@@ -1,0 +1,23 @@
+{
+  "name": "cst8002",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nanastrike/CST8002_PracticalProject_040_LuoQinyu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nanastrike/CST8002_PracticalProject_040_LuoQinyu/issues"
+  },
+  "homepage": "https://github.com/Nanastrike/CST8002_PracticalProject_040_LuoQinyu#readme",
+  "dependencies": {
+    "csv-parser": "^3.2.0"
+  }
+}
