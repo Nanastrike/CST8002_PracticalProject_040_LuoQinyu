@@ -21,6 +21,7 @@ const records = [];
  * @constant {string}
  */
 const STUDENT_NAME = "Qinyu Luo";
+console.log(`Student: ${STUDENT_NAME}`);
 /**
  * Maximum number of records to read from CSV file
  * @constant {number}
@@ -31,12 +32,13 @@ const MAX_RECORDS = 3;
  * Read and parse CSV file using streams
  * Creates RecordObjects from each row and stores in records array
  */
+console.log('Loading dataset...');
 fs.createReadStream('dataset.csv')
     .pipe(csv())
-        /**
-     * Event handler for processing each row of CSV data
-     * @param {Object} row - Single row of CSV data as key-value pairs
-     */
+    /**
+ * Event handler for processing each row of CSV data
+ * @param {Object} row - Single row of CSV data as key-value pairs
+ */
     .on('data', (row) => {
         if (records.length < MAX_RECORDS) {
             // Create new RecordObjects instance from CSV row data
@@ -51,14 +53,14 @@ fs.createReadStream('dataset.csv')
             records.push(record);
         }
     })
-        /**
-     * Event handler for when CSV file reading is complete
-     * Outputs all loaded records to console
-     */
+    /**
+ * Event handler for when CSV file reading is complete
+ * Outputs all loaded records to console
+ */
     .on('end', () => {
 
         console.log('Records loaded:');
-         // Loop through records array and display each record's data
+        // Loop through records array and display each record's data
         for (let i = 0; i < records.length; i++) {
             console.log(`Record ${i + 1}:`);
             console.log(`  Site: ${records[i].getSiteIdentification()}`);
@@ -69,12 +71,12 @@ fs.createReadStream('dataset.csv')
             console.log('');
         }
 
-        console.log(`\nProgram completed by: ${STUDENT_NAME}`);
+        console.log(`Program completed by: ${STUDENT_NAME}`);
     })
-        /**
-     * Event handler for file reading errors
-     * @param {Error} err - Error object containing error details
-     */
+    /**
+ * Event handler for file reading errors
+ * @param {Error} err - Error object containing error details
+ */
     .on('error', (err) => {
         console.error('Error reading file:', err.message);
     });
