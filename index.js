@@ -1,9 +1,9 @@
 /*
-  @author :Qinyu Luo
-  @course: CST8002
-  @assignment: practical projects 1
-  @time: 2025/9/21
-  @description:  reading a csv file and outputing the first few lines
+@author :Qinyu Luo
+@course: CST8002
+@assignment: practical projects 1
+@time: 2025/9/21
+@description:  reading a csv file and outputing the first few lines
 */
 
 // Required modules for file operations and CSV parsing
@@ -26,7 +26,7 @@ console.log(`Student: ${STUDENT_NAME}`);
  * Maximum number of records to read from CSV file
  * @constant {number}
  */
-const MAX_RECORDS = 3;
+const MAX_RECORDS = 10;
 
 /**
  * Read and parse CSV file using streams
