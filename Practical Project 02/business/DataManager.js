@@ -65,6 +65,27 @@ class DataManager {
         }
     }
 
+    /**
+     * Get all records
+     * @returns {Array<Record>} All records
+     */
+    getAllRecords() {
+        return this.records;
+    }
+
+    /**
+     * Get a single record by index
+     * @param {number} index - Index of the record
+     * @returns {Record|null} Record object or null if not found
+     */
+    getRecord(index) {
+        if (index >= 0 && index < this.records.length) {
+            return this.records[index];
+        }
+        console.log(`✗ Record at index ${index} not found`);
+        return null;
+    }
+
 }
 
 export default DataManager;
