@@ -131,6 +131,39 @@ class DataManager {
         return false;
     }
 
+    /**
+     * Delete a record from the data structure
+     * @param {number} index - Index of record to delete
+     * @returns {boolean} Success status
+     */
+    deleteRecord(index) {
+        if (index >= 0 && index < this.records.length) {
+            const deleted = this.records.splice(index, 1);
+            console.log(`✓ Deleted record: ${deleted[0].identification}`);
+            return true;
+        }
+        console.log(`✗ Record at index ${index} not found`);
+        return false;
+    }
+
+    /**
+     * Get total number of records
+     * @returns {number} Number of records
+     */
+    getRecordCount() {
+        return this.records.length;
+    }
+
+    /**
+     * Search records by name
+     * @param {string} searchName - Name to search for
+     * @returns {Array<Record>} Matching records
+     */
+    searchByName(searchName) {
+        return this.records.filter(record => 
+            record.name.toLowerCase().includes(searchName.toLowerCase())
+        );
+    }
 }
 
 export default DataManager;
