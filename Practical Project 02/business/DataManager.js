@@ -86,6 +86,30 @@ class DataManager {
         return null;
     }
 
+    /**
+     * Create and add a new record to the data structure
+     * @param {Object} data - Record data object
+     * @returns {boolean} Success status
+     */
+    createRecord(data) {
+        try {
+            const newRecord = new Record(
+                data.identification,
+                parseInt(data.year),
+                parseInt(data.transect),
+                parseInt(data.quadrat),
+                data.name,
+                parseInt(data.count)
+            );
+            this.records.push(newRecord);
+            console.log('✓ Record created successfully!');
+            return true;
+        } catch (error) {
+            console.error(`✗ Error creating record: ${error.message}`);
+            return false;
+        }
+    }
+
 }
 
 export default DataManager;
