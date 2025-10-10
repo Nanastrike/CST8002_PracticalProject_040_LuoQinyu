@@ -110,6 +110,27 @@ class DataManager {
         }
     }
 
+    /**
+     * Update an existing record in the data structure
+     * @param {number} index - Index of record to update
+     * @param {Object} newData - New data for the record
+     * @returns {boolean} Success status
+     */
+    updateRecord(index, newData) {
+        if (index >= 0 && index < this.records.length) {
+            this.records[index].identification = newData.identification;
+            this.records[index].year = parseInt(newData.year);
+            this.records[index].transect = parseInt(newData.transect);
+            this.records[index].quadrat = parseInt(newData.quadrat);
+            this.records[index].name = newData.name;
+            this.records[index].count = parseInt(newData.count);
+            console.log('✓ Record updated successfully!');
+            return true;
+        }
+        console.log(`✗ Record at index ${index} not found`);
+        return false;
+    }
+
 }
 
 export default DataManager;
