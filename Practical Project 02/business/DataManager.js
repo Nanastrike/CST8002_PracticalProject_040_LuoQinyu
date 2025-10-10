@@ -49,6 +49,22 @@ class DataManager {
         return result;
     }
 
+    /**
+     * Save current records to a new file with UUID filename
+     * @returns {string|null} Generated filename or null if failed
+     */
+    saveData() {
+        try {
+            console.log('\n--- Saving data to new file ---');
+            const filePath = this.fileHandler.saveRecordsToFile(this.records);
+            console.log(`✓ Successfully saved to: ${filePath}`);
+            return filePath;
+        } catch (error) {
+            console.error(`✗ Error saving data: ${error.message}`);
+            return null;
+        }
+    }
+
 }
 
 export default DataManager;
