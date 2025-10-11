@@ -1,8 +1,9 @@
 {
   "name": "practical-project-02",
   "version": "1.0.0",
-  "description": "",
+  "description": "CST8002 Practical Project Part 2",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node app.js",
     "test": "jest"
@@ -11,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "csv-parser": "^3.2.0",
+    "csv-parse": "^6.1.0",
     "uuid": "^13.0.0"
   },
   "devDependencies": {

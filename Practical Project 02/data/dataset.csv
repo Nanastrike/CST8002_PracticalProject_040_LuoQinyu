@@ -1,5 +1,5 @@
-Site identification,Year,Transect,Quadrat,Species Common Name,Count
-Identification du site,Année,Transect,Quadrat,Nom commun de l’espèce,Dénombrement
+Identification,Year,Transect,Quadrat,Name,Count
+identification,Anne,Transect,Quadrat,Nom,nombrement
 4,1997,1.7,-7.1,Butter Clam,0
 4,1997,1.7,-7.1,Littleneck Clam,0
 4,1997,1.7,-7.1,Manila Clam,0

@@ -14,11 +14,11 @@ class FileHandler {
     /**
      * Read records from CSV file
      * @param {string} filePath - Path to the CSV file
-     * @param {number} maxRecords - Maximum number of records to read (default: 100)
+     * @param {number} maxRecords - Maximum number of records to read (default: 5)
      * @returns {Array<Record>} Array of Record objects
      * @throws {Error} If file cannot be read
      */
-    readRecordsFromFile(filePath, maxRecords = 5) {
+    readRecordsFromFile(filePath, maxRecords = 100) {
         try {
             console.log(`Reading from file: ${filePath}`);
             
@@ -32,8 +32,6 @@ class FileHandler {
                 trim: true,
                 cast: true  // Automatically convert types
             });
-
-            console.log(`Total records in file: ${records.length}`);
 
             // Limit to maxRecords
             const limitedRecords = records.slice(0, maxRecords);
@@ -70,11 +68,6 @@ class FileHandler {
      */
     saveRecordsToFile(records, outputDir = 'data') {
         try {
-            // Ensure output directory exists
-            if (!fs.existsSync(outputDir)) {
-                fs.mkdirSync(outputDir, { recursive: true });
-            }
-
             // Generate UUID filename
             const filename = `${uuidv4()}.csv`;
             const filePath = `${outputDir}/${filename}`;

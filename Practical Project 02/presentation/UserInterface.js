@@ -1,9 +1,8 @@
 /**
  * UserInterface class for handling user interactions.
  * Course: CST8002
- * Professor: [Your Professor Name]
- * Due Date: [Due Date]
- * Author: [Your Full Name]
+ * Due Date: 2025/10/11
+ * Author: Qinyu Luo
  */
 
 import readline from 'readline';
@@ -19,8 +18,7 @@ class UserInterface {
             input: process.stdin,
             output: process.stdout
         });
-        // ⭐ 替换成你的真实姓名！
-        this.yourFullName = "Your Full Name Here";
+        this.yourFullName = "Qinyu Luo";
     }
 
     /**
@@ -28,10 +26,10 @@ class UserInterface {
      */
     displayMenu() {
         console.log('\n' + '='.repeat(60));
-        console.log(`📊 Data Management System - Program by ${this.yourFullName}`);
+        console.log(`Data Management System - Program by ${this.yourFullName}`);
         console.log('='.repeat(60));
         console.log('1. Reload data from dataset');
-        console.log('2. Save data to file (UUID filename)');
+        console.log('2. Save data to file');
         console.log('3. Display all records');
         console.log('4. Display single record');
         console.log('5. Create new record');
@@ -62,7 +60,7 @@ class UserInterface {
         const records = this.dataManager.getAllRecords();
         
         console.log('\n' + '─'.repeat(60));
-        console.log(`📋 Total Records: ${records.length}`);
+        console.log(`Total Records: ${records.length}`);
         console.log(`Program by ${this.yourFullName}`);
         console.log('─'.repeat(60));
         
@@ -92,7 +90,7 @@ class UserInterface {
         const index = parseInt(indexStr);
         
         if (isNaN(index)) {
-            console.log('✗ Invalid index. Please enter a number.');
+            console.log('Invalid index. Please enter a number.');
             return;
         }
 
@@ -112,7 +110,7 @@ class UserInterface {
      */
     async createNewRecord() {
         console.log('\n' + '─'.repeat(60));
-        console.log(`📝 Creating New Record - Program by ${this.yourFullName}`);
+        console.log(`Creating New Record - Program by ${this.yourFullName}`);
         console.log('─'.repeat(60));
         
         try {
@@ -133,10 +131,10 @@ class UserInterface {
             });
             
             if (success) {
-                console.log(`\n✓ Record created! Total records: ${this.dataManager.getRecordCount()}`);
+                console.log(`\nRecord created! Total records: ${this.dataManager.getRecordCount()}`);
             }
         } catch (error) {
-            console.log(`✗ Error: ${error.message}`);
+            console.log(`Error: ${error.message}`);
         }
     }
 
@@ -145,14 +143,14 @@ class UserInterface {
      */
     async editRecord() {
         console.log('\n' + '─'.repeat(60));
-        console.log(`✏️  Editing Record - Program by ${this.yourFullName}`);
+        console.log(`Editing Record - Program by ${this.yourFullName}`);
         console.log('─'.repeat(60));
         
         const indexStr = await this.prompt('Enter record index to edit: ');
         const recordIndex = parseInt(indexStr);
         
         if (isNaN(recordIndex)) {
-            console.log('✗ Invalid index.');
+            console.log('Invalid index.');
             return;
         }
         
@@ -187,14 +185,14 @@ class UserInterface {
      */
     async deleteRecord() {
         console.log('\n' + '─'.repeat(60));
-        console.log(`🗑️  Deleting Record - Program by ${this.yourFullName}`);
+        console.log(`Deleting Record - Program by ${this.yourFullName}`);
         console.log('─'.repeat(60));
         
         const indexStr = await this.prompt('Enter record index to delete: ');
         const index = parseInt(indexStr);
         
         if (isNaN(index)) {
-            console.log('✗ Invalid index.');
+            console.log('Invalid index.');
             return;
         }
 
@@ -217,7 +215,7 @@ class UserInterface {
      */
     async searchRecords() {
         console.log('\n' + '─'.repeat(60));
-        console.log(`🔍 Search Records - Program by ${this.yourFullName}`);
+        console.log(`Search Records - Program by ${this.yourFullName}`);
         console.log('─'.repeat(60));
         
         const searchName = await this.prompt('Enter name to search: ');
@@ -238,16 +236,16 @@ class UserInterface {
      */
     async start() {
         console.log('\n' + '='.repeat(60));
-        console.log('🚀 Welcome to Data Management System');
+        console.log('Welcome to Data Management System');
         console.log(`Program by ${this.yourFullName}`);
         console.log('='.repeat(60));
         
         // Load initial data
-        console.log('\n📂 Loading data from dataset...');
+        console.log('\nLoading data from dataset...');
         if (this.dataManager.loadData()) {
-            console.log(`✓ Successfully loaded ${this.dataManager.getRecordCount()} records.`);
+            console.log(`Successfully loaded ${this.dataManager.getRecordCount()} records.`);
         } else {
-            console.log('⚠️  Warning: Failed to load data. Starting with empty dataset.');
+            console.log('Warning: Failed to load data. Starting with empty dataset.');
         }
 
         let running = true;
@@ -284,12 +282,12 @@ class UserInterface {
                 case '9':
                     running = false;
                     console.log('\n' + '='.repeat(60));
-                    console.log('👋 Thank you for using Data Management System!');
+                    console.log('Thank you for using Data Management System!');
                     console.log(`Program by ${this.yourFullName}`);
                     console.log('='.repeat(60) + '\n');
                     break;
                 default:
-                    console.log('✗ Invalid choice. Please enter 1-9.');
+                    console.log('Invalid choice. Please enter 1-9.');
             }
         }
         

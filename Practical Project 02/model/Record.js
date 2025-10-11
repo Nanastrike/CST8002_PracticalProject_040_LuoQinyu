@@ -1,3 +1,9 @@
+/**
+ * Course: CST8002
+ * Due Date: 2025/10/12
+ * Author: Qinyu Luo
+ */
+
 class Record {
     /**
      * Create a new Record instance

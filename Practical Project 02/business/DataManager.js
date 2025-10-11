@@ -1,7 +1,7 @@
 /**
  * DataManager class for managing record operations (CRUD).
  * Course: CST8002
- * Due Date: 2025/10/12
+ * Due Date: 2025/10/11
  * Author: Qinyu Luo
  */
 
@@ -26,7 +26,7 @@ class DataManager {
     loadData() {
         try {
             console.log('Loading initial data from dataset...');
-            this.records = this.fileHandler.readRecordsFromFile(this.datasetPath, 100);
+            this.records = this.fileHandler.readRecordsFromFile(this.datasetPath, 5);
             return true;
         } catch (error) {
             console.error(`Error loading data: ${error.message}`);
@@ -42,9 +42,9 @@ class DataManager {
         console.log('\n--- Reloading data from dataset ---');
         const result = this.loadData();
         if (result) {
-            console.log('✓ Data reloaded successfully!');
+            console.log('Data reloaded successfully!');
         } else {
-            console.log('✗ Failed to reload data');
+            console.log('Failed to reload data');
         }
         return result;
     }
@@ -57,10 +57,10 @@ class DataManager {
         try {
             console.log('\n--- Saving data to new file ---');
             const filePath = this.fileHandler.saveRecordsToFile(this.records);
-            console.log(`✓ Successfully saved to: ${filePath}`);
+            console.log(`Successfully saved to: ${filePath}`);
             return filePath;
         } catch (error) {
-            console.error(`✗ Error saving data: ${error.message}`);
+            console.error(`Error saving data: ${error.message}`);
             return null;
         }
     }
@@ -82,7 +82,7 @@ class DataManager {
         if (index >= 0 && index < this.records.length) {
             return this.records[index];
         }
-        console.log(`✗ Record at index ${index} not found`);
+        console.log(`Record at index ${index} not found`);
         return null;
     }
 
@@ -102,10 +102,10 @@ class DataManager {
                 parseInt(data.count)
             );
             this.records.push(newRecord);
-            console.log('✓ Record created successfully!');
+            console.log('Record created successfully!');
             return true;
         } catch (error) {
-            console.error(`✗ Error creating record: ${error.message}`);
+            console.error(`Error creating record: ${error.message}`);
             return false;
         }
     }
@@ -124,10 +124,10 @@ class DataManager {
             this.records[index].quadrat = parseInt(newData.quadrat);
             this.records[index].name = newData.name;
             this.records[index].count = parseInt(newData.count);
-            console.log('✓ Record updated successfully!');
+            console.log('Record updated successfully!');
             return true;
         }
-        console.log(`✗ Record at index ${index} not found`);
+        console.log(`Record at index ${index} not found`);
         return false;
     }
 
@@ -139,10 +139,10 @@ class DataManager {
     deleteRecord(index) {
         if (index >= 0 && index < this.records.length) {
             const deleted = this.records.splice(index, 1);
-            console.log(`✓ Deleted record: ${deleted[0].identification}`);
+            console.log(`Deleted record: ${deleted[0].identification}`);
             return true;
         }
-        console.log(`✗ Record at index ${index} not found`);
+        console.log(`Record at index ${index} not found`);
         return false;
     }
 

@@ -1,9 +1,8 @@
 /**
  * Main application entry point.
  * Course: CST8002
- * Professor: [Your Professor Name]
- * Due Date: [Due Date]
- * Author: [Your Full Name]
+ * Due Date: 2025/10/11
+ * Author: Qinyu Luo
  */
 
 import UserInterface from './presentation/UserInterface.js';
