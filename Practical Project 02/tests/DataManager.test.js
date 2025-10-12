@@ -1,13 +1,11 @@
 /**
  * Unit tests for DataManager class.
  * Course: CST8002
- * Professor: [Your Professor Name]
- * Due Date: [Due Date]
- * Author: [Your Full Name]
+ * Due Date: 2025/10/12
+ * Author: Qinyu Luo
  */
 
 import DataManager from '../business/DataManager.js';
-import Record from '../model/Record.js';
 
 describe('DataManager CRUD Operations', () => {
     let dataManager;
