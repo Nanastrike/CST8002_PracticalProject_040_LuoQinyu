@@ -1,12 +1,16 @@
 /**
  * UserInterface class for handling user interactions.
+ * Updated for Practical Project Part 3 to demonstrate polymorphism
+ * 
  * Course: CST8002
- * Due Date: 2025/10/11
+ * Practical Project Part 3
  * Author: Qinyu Luo
  */
 
 import readline from 'readline';
 import DataManager from '../business/DataManager.js';
+import JSONFormatRecord from '../model/JSONFormatRecord.js';
+import TableFormatRecord from '../model/TableFormatRecord.js';
 
 class UserInterface {
     /**
@@ -30,13 +34,15 @@ class UserInterface {
         console.log('='.repeat(60));
         console.log('1. Reload data from dataset');
         console.log('2. Save data to file');
-        console.log('3. Display all records');
+        console.log('3. Display all records (Standard format)');
         console.log('4. Display single record');
         console.log('5. Create new record');
         console.log('6. Edit record');
         console.log('7. Delete record');
         console.log('8. Search records by name');
-        console.log('9. Exit');
+        console.log('9. Display records in JSON format');
+        console.log('10. Display records in Table format');
+        console.log('11. Exit');
         console.log('='.repeat(60));
     }
 
@@ -54,13 +60,13 @@ class UserInterface {
     }
 
     /**
-     * Display all records with pagination
+     * Display all records with pagination (standard format)
      */
     displayAllRecords() {
         const records = this.dataManager.getAllRecords();
         
         console.log('\n' + '─'.repeat(60));
-        console.log(`Total Records: ${records.length}`);
+        console.log(`Total Records: ${records.length} (Standard Format)`);
         console.log(`Program by ${this.yourFullName}`);
         console.log('─'.repeat(60));
         
@@ -76,6 +82,93 @@ class UserInterface {
             // Display name every 10 records
             if ((index + 1) % 10 === 0) {
                 console.log(`\n--- Program by ${this.yourFullName} ---`);
+            }
+        });
+        
+        console.log('\n' + '─'.repeat(60));
+    }
+
+    /**
+     * Display records using polymorphic formatting
+     * This method demonstrates polymorphism in action:
+     * - Creates instances of different subclasses (JSONFormatRecord, TableFormatRecord)
+     * - Stores them in an array of base class type (Record)
+     * - Calls formatOutput() polymorphically - each object uses its own implementation
+     * 
+     * @param {string} formatType - 'json' or 'table'
+     */
+    displayRecordsWithFormat(formatType) {
+        const records = this.dataManager.getAllRecords();
+        
+        console.log('\n' + '─'.repeat(60));
+        console.log(`Total Records: ${records.length} (${formatType.toUpperCase()} Format)`);
+        console.log(`Program by ${this.yourFullName}`);
+        console.log('─'.repeat(60));
+        
+        if (records.length === 0) {
+            console.log('No records to display.');
+            return;
+        }
+
+        // POLYMORPHISM IN ACTION:
+        // Convert plain records to formatted record objects
+        // Each subclass will override the formatOutput() method
+        const formattedRecords = records.map(record => {
+            let formattedRecord;
+            
+            switch(formatType) {
+                case 'json':
+                    // Create JSONFormatRecord subclass instance
+                    formattedRecord = new JSONFormatRecord(
+                        record.identification,
+                        record.year,
+                        record.transect,
+                        record.quadrat,
+                        record.name,
+                        record.count
+                    );
+                    break;
+                    
+                case 'table':
+                    // Create TableFormatRecord subclass instance
+                    formattedRecord = new TableFormatRecord(
+                        record.identification,
+                        record.year,
+                        record.transect,
+                        record.quadrat,
+                        record.name,
+                        record.count
+                    );
+                    break;
+                    
+                default:
+                    // Use base Record class
+                    formattedRecord = record;
+            }
+            
+            return formattedRecord;
+        });
+
+        // Display table header if table format
+        if (formatType === 'table') {
+            console.log(TableFormatRecord.getTableHeader());
+            console.log(TableFormatRecord.getSeparator());
+        }
+
+        // POLYMORPHIC METHOD CALLS:
+        // Each record object calls its own version of formatOutput()
+        // - JSONFormatRecord.formatOutput() returns JSON
+        // - TableFormatRecord.formatOutput() returns table row
+        // - Record.formatOutput() returns standard format
+        formattedRecords.forEach((record, index) => {
+            if (formatType === 'json') {
+                console.log(`\n[Index: ${index}]`);
+            }
+            console.log(record.formatOutput());
+            
+            // Display name every 10 records
+            if ((index + 1) % 10 === 0) {
+                console.log(`\n--- Program by ${this.yourFullName} ---\n`);
             }
         });
         
@@ -252,7 +345,7 @@ class UserInterface {
         
         while (running) {
             this.displayMenu();
-            const choice = await this.prompt('Enter your choice (1-9): ');
+            const choice = await this.prompt('Enter your choice (1-11): ');
             
             switch (choice) {
                 case '1':
@@ -280,6 +373,14 @@ class UserInterface {
                     await this.searchRecords();
                     break;
                 case '9':
+                    // NEW: Display in JSON format using polymorphism
+                    this.displayRecordsWithFormat('json');
+                    break;
+                case '10':
+                    // NEW: Display in Table format using polymorphism
+                    this.displayRecordsWithFormat('table');
+                    break;
+                case '11':
                     running = false;
                     console.log('\n' + '='.repeat(60));
                     console.log('Thank you for using Data Management System!');
@@ -287,7 +388,7 @@ class UserInterface {
                     console.log('='.repeat(60) + '\n');
                     break;
                 default:
-                    console.log('Invalid choice. Please enter 1-9.');
+                    console.log('Invalid choice. Please enter 1-11.');
             }
         }
         
