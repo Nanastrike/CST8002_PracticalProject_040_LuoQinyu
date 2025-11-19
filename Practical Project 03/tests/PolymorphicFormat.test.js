@@ -39,13 +39,13 @@ function runTest(testName, testFunc) {
     try {
         const result = testFunc();
         if (result) {
-            console.log(`✓ PASS: ${testName}`);
+            console.log(` PASS: ${testName}`);
             passedTests++;
         } else {
-            console.log(`✗ FAIL: ${testName}`);
+            console.log(` FAIL: ${testName}`);
         }
     } catch (error) {
-        console.log(`✗ FAIL: ${testName} - Error: ${error.message}`);
+        console.log(` FAIL: ${testName} - Error: ${error.message}`);
     }
 }
 
@@ -247,9 +247,9 @@ console.log(`Failed: ${totalTests - passedTests}`);
 console.log(`Success Rate: ${((passedTests / totalTests) * 100).toFixed(1)}%`);
 
 if (passedTests === totalTests) {
-    console.log('\n✓ ALL TESTS PASSED! Polymorphism implementation is correct.');
+    console.log('\n ALL TESTS PASSED! Polymorphism implementation is correct.');
 } else {
-    console.log('\n✗ Some tests failed. Please review the implementation.');
+    console.log('\n Some tests failed. Please review the implementation.');
 }
 
 console.log('='.repeat(70) + '\n');
