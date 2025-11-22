@@ -1,0 +1,7 @@
+[
+  { "id": 1, "name": "Alice", "age": 20, "major": "Computer Science", "gpa": 3.8 },
+  { "id": 2, "name": "Bob", "age": 22, "major": "Engineering", "gpa": 3.5 },
+  { "id": 3, "name": "Charlie", "age": 21, "major": "Computer Science", "gpa": 3.9 },
+  { "id": 4, "name": "Diana", "age": 20, "major": "Mathematics", "gpa": 3.7 },
+  { "id": 5, "name": "Eve", "age": 22, "major": "Engineering", "gpa": 3.6 }
+]
