@@ -164,6 +164,55 @@ class DataManager {
             record.name.toLowerCase().includes(searchName.toLowerCase())
         );
     }
+
+    /**
+ * Sort records by multiple columns
+ * @param {Array<Object>} sortRules - Array of sort rules 
+ * Example: [{column: 'year', order: 'asc'}, {column: 'name', order: 'desc'}]
+ * @returns {Array<Record>} Sorted records
+ */
+multiColumnSort(sortRules) {
+    if (!sortRules || sortRules.length === 0) {
+        console.log('No sort rules provided');
+        return this.records;
+    }
+
+    // Create a copy to avoid modifying original array
+    const sortedRecords = [...this.records];
+
+    sortedRecords.sort((a, b) => {
+        // Iterate through each sort rule
+        for (let rule of sortRules) {
+            const column = rule.column;
+            const order = rule.order; // 'asc' or 'desc'
+            
+            let comparison = 0;
+            
+            // Compare based on column type
+            if (typeof a[column] === 'string') {
+                comparison = a[column].localeCompare(b[column]);
+            } else {
+                comparison = a[column] - b[column];
+            }
+            
+            // Apply sort order
+            if (order === 'desc') {
+                comparison = -comparison;
+            }
+            
+            // If not equal, return the comparison result
+            if (comparison !== 0) {
+                return comparison;
+            }
+            // If equal, continue to next sort rule
+        }
+        
+        return 0; // All columns are equal
+    });
+
+    console.log(`Sorted ${sortedRecords.length} records by ${sortRules.length} column(s)`);
+    return sortedRecords;
+}
 }
 
 export default DataManager;
