@@ -346,7 +346,7 @@ class UserInterface {
 
         while (running) {
             this.displayMenu();
-            const choice = await this.prompt('Enter your choice (1-11): ');
+            const choice = await this.prompt('Enter your choice (1-12): ');
 
             switch (choice) {
                 case '1':
@@ -439,7 +439,7 @@ class UserInterface {
             const order = orderInput.toLowerCase() === 'd' ? 'desc' : 'asc';
 
             sortRules.push({ column: selectedColumn, order });
-            console.log(`✓ Added: ${selectedColumn} (${order})`);
+            console.log(`Added: ${selectedColumn} (${order})`);
 
             if (sortRules.length < availableColumns.length) {
                 const continueInput = await this.prompt('\nAdd another sort column? (y/n): ');
