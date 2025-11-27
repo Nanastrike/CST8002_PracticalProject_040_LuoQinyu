@@ -1,0 +1,23 @@
+{
+  "name": "practical-project-03",
+  "version": "1.0.0",
+  "description": "CST8002 Practical Project Part 4 - REST API",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "keywords": [],
+  "author": "Qinyu Luo",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^6.1.0",
+    "uuid": "^13.0.0",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
